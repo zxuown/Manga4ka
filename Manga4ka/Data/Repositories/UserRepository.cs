@@ -1,4 +1,5 @@
-﻿using Manga4ka.Data.Entities;
+﻿using Manga4ka.Business.Models;
+using Manga4ka.Data.Entities;
 using Manga4ka.Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ public class UserRepository(Manga4kaContext context) : BaseRepository<User>(cont
     public async Task<User> Register(User user)
     {
         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+        user.Roles.Add("User");
         await _entities.AddAsync(user);
         return user;
     }

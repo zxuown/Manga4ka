@@ -45,12 +45,16 @@ builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IMangaRepository, MangaRepository>();
 builder.Services.AddScoped<IUserRepository,  UserRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>(); 
+builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IMangaService, MangaService>();
 builder.Services.AddScoped<IPdfFileService, PdfService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 
 var mapperConfig = new MapperConfiguration(mc =>

@@ -34,11 +34,12 @@ class AuthorService {
         }
     }
 
-    static async CreateAuthor(author) {
+    static async CreateAuthor(author, token) {
         try {
             const response = await axios.post(`${API}`, author, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 }
             })
             return response.status
@@ -48,11 +49,12 @@ class AuthorService {
         }
     }
 
-    static async UpdateAuthor(id, author) {
+    static async UpdateAuthor(id, author, token) {
         try {
             const response = await axios.put(`${API}/${id}`, author, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 }
             })
             return response.status
@@ -62,9 +64,13 @@ class AuthorService {
         }
     }
 
-    static async DeleteAuthor(id) {
+    static async DeleteAuthor(id, token) {
         try {
-            const response = await axios.delete(`${API}/${id}`)
+            const response = await axios.delete(`${API}/${id}`,{
+                headers: { 
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             return response.status
         } catch (error) {
             console.error('Error deleting author', error)

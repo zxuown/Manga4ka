@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MainSearch from "./search/MainSearch";
 import ThemeContext from "../context/ThemeContext";
@@ -7,6 +7,7 @@ import GenreService from "../services/GenreService";
 import AuthorService from "../services/AuthorService";
 import AuthService from "../services/AuthService";
 import AuthContext from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 function Navbar() {
     const { darkMode, toggleDarkMode } = useContext(ThemeContext)
@@ -47,6 +48,32 @@ function Navbar() {
         }
     }
 
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+          try {
+            const user = await AuthService.GetCurrentUser()
+            setUser(user)
+            console.log(user)
+          } catch (e) {
+            console.error("Current user error", e)
+          }
+        }
+        if (localStorage.getItem("token")) {
+          if (AuthService.isTokenExpired(localStorage.getItem("token"))) {
+            Swal.fire({
+              title: 'Session Expired',
+              text: 'Your session has expired, please log in again.',
+              icon: 'warning',
+              confirmButtonText: 'Login'
+            }).then(() => {
+              navigate("/login")
+            })
+          } else {
+            fetchCurrentUser()
+          }
+        }
+      }, [navigate, setUser])
+
     return (
         <>
             <nav className={`navbar navbar-light bg-light navbar-expand-lg ${darkMode ? 'bg-dark' : 'bg-light'}`}>
@@ -84,11 +111,11 @@ function Navbar() {
                                         <i className={`fas fa-${darkMode ? 'moon' : 'sun'} me-2`}></i>
                                     </label>
                                 </div>
-                                {user.username ? (
+                                {user.name ? (
                                     <>
                                         <li className="nav-item">
                                             <span className={`nav-link ${darkMode ? 'dark-mode' : ''}`}>
-                                                <i className="fas fa-user"></i> {user.username}
+                                                <i className="fas fa-user"></i> {user.name}
                                             </span>
                                         </li>
                                         <li className="nav-item">

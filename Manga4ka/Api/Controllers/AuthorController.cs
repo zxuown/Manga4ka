@@ -1,6 +1,7 @@
 ﻿using Manga4ka.Business.Interfaces;
 using Manga4ka.Business.Models;
 using Manga4ka.Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manga4ka.Api.Controllers;
@@ -29,6 +30,7 @@ public class AuthorController(IAuthorService authorService) : ControllerBase
         return Ok(await _service.GetAuthorByIdAsync(id));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult> AddAuthor([FromBody] AuthorDto author)
     {
@@ -36,6 +38,7 @@ public class AuthorController(IAuthorService authorService) : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateAUthor([FromBody] AuthorDto author)
     {
@@ -43,6 +46,7 @@ public class AuthorController(IAuthorService authorService) : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteAuthor(int id)
     {

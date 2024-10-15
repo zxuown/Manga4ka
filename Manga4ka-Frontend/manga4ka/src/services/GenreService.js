@@ -34,9 +34,13 @@ class GenreService {
         }
     }
 
-    static async CreateGenre(genre) {
+    static async CreateGenre(genre, token) {
         try {
-            const response = await axios.post(`${API}`, genre)
+            const response = await axios.post(`${API}`, genre, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             return response.status
         } catch (error) {
             console.error('Error posting genre', error)
@@ -44,9 +48,13 @@ class GenreService {
         }
     }
 
-    static async EditGenre(id, genre) {
+    static async EditGenre(id, genre, token) {
         try {
-            const response = await axios.put(`${API}/${id}`, genre)
+            const response = await axios.put(`${API}/${id}`, genre, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             return response.status
         } catch (error) {
             console.error('Error editing genre', error)
@@ -54,9 +62,14 @@ class GenreService {
         }
     }
 
-    static async DeleteGenre(id) {
+    static async DeleteGenre(id, token) {
         try {
-            const response = await axios.delete(`${API}/${id}`)
+            console.log(token)
+            const response = await axios.delete(`${API}/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             return response.status
         } catch (error) {
             console.error('Error deleting genre', error)

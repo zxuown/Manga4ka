@@ -1,4 +1,5 @@
-﻿using Manga4ka.Data.Entities;
+﻿using Manga4ka.Business.Models;
+using Manga4ka.Data.Entities;
 using Manga4ka.Data.Repositories;
 
 namespace Manga4ka.Data.Interfaces;

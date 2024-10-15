@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 namespace Manga4ka.Business.Services;
 
 public class MangaService(IUnitOfWork unitOfWork, IMapper mapper) : IMangaService
@@ -70,6 +71,26 @@ public class MangaService(IUnitOfWork unitOfWork, IMapper mapper) : IMangaServic
         await _unitOfWork.Manga.DeleteAsync(id);
         await _unitOfWork.SaveAsync();
     }
+    public async Task<IEnumerable<MangaDto>> SortMangaByPublishedAscAsync()
+    {
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.SortByPublishedAscAsync());
+    }
+    public async Task<IEnumerable<MangaDto>> SortMangaByPublishedDescAsync()
+    {
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.SortByPublishedDescAsync());
+    }
+    public async Task<IEnumerable<MangaDto>> SortMangaByRatingAscAsync()
+    {
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.SortByRatingAscAsync());
+    }
+    public async Task<IEnumerable<MangaDto>> SortMangaByRatingDescAsync()
+    {
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.SortByRatingDescAsync());
+    }
+    public async Task<IEnumerable<MangaDto>> SortMangaByFavoriteAsync(int userId)
+    {
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.SortByFavoriteAsync(userId));
+    }
     public async Task<MangaDto> GetMangaByIdAsync(int id)
     {
         Manga manga = await _unitOfWork.Manga.GetByIdAsync(id);
@@ -79,7 +100,27 @@ public class MangaService(IUnitOfWork unitOfWork, IMapper mapper) : IMangaServic
     }
     public async Task<IEnumerable<MangaDto>> GetAllMangaAsync()
     {
-        IEnumerable<Manga> manga = await _unitOfWork.Manga.GetAllAsync();
+        return await SetMangaDtosGenresAsync(await _unitOfWork.Manga.GetAllAsync());
+    }
+    public async Task AddFavoriteMangaAsync(FavoriteMangaDto favoriteMangaDto)
+    {
+        var favoriteManga = _mapper.Map<FavoriteManga>(favoriteMangaDto);
+        favoriteManga.User = await _unitOfWork.Users.GetByIdAsync(favoriteMangaDto.User.Id);
+        favoriteManga.Manga = await _unitOfWork.Manga.GetByIdAsync(favoriteMangaDto.Manga.Id);
+        await _unitOfWork.Manga.AddFavoriteMangaAsync(favoriteManga);
+        await _unitOfWork.SaveAsync();
+    }
+    public async Task DeleteFavoriteMangaAsync(int mangaId, int userId)
+    {
+        await _unitOfWork.Manga.DeleteFavoriteMangaAsync(mangaId, userId);
+        await _unitOfWork.SaveAsync();
+    }
+    public async Task<IEnumerable<FavoriteMangaDto>> GetAllFavoriteMangaByUserIdAsync(int userId)
+    {
+        return _mapper.Map<IEnumerable<FavoriteMangaDto>>(await _unitOfWork.Manga.GetAllFavoriteMangaByUserIdAsync(userId));
+    }
+    public async Task<IEnumerable<MangaDto>> SetMangaDtosGenresAsync(IEnumerable<Manga> manga)
+    {
         var mangaDtos = _mapper.Map<IEnumerable<MangaDto>>(manga);
         foreach (var item in mangaDtos)
         {

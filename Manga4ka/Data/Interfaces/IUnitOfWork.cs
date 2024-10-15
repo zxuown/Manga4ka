@@ -9,5 +9,9 @@ public interface IUnitOfWork
     IGenreRepository Genres { get; }
 
     IUserRepository Users { get; }
+
+    ICommentRepository Comments { get; }
+
+    IRatingRepository Rating { get; }
     Task SaveAsync();
 }

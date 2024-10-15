@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "D:\\ReposVs\\Manga4ka\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\pdffilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\pdffilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\mangacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\business\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:business\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\business\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:business\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|d:\\reposvs\\manga4ka\\data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE0A6B13-351E-4687-83B9-A4B148033B66}|Manga4ka.csproj|solutionrelative:data\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,92 +38,103 @@
       "DocumentGroups": [
         {
           "DockedWidth": 504,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\ReposVs\\Manga4ka\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAqwGQAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T22:57:14.463Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Api\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAcwDYAAAAsAAAA",
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\RatingController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\RatingController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\RatingController.cs",
+              "RelativeToolTip": "Api\\Controllers\\RatingController.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T15:34:46.489Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-10-15T22:18:19.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Business\\Services\\AccountService.cs",
-              "RelativeDocumentMoniker": "Business\\Services\\AccountService.cs",
-              "ToolTip": "D:\\ReposVs\\Manga4ka\\Business\\Services\\AccountService.cs",
-              "RelativeToolTip": "Business\\Services\\AccountService.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAUwCYAAAACAAAA",
+              "Title": "CommentController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\CommentController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\CommentController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\CommentController.cs",
+              "RelativeToolTip": "Api\\Controllers\\CommentController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAwwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T15:44:24.683Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-10-15T22:15:05.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Business\\Interfaces\\IAccountService.cs",
-              "RelativeDocumentMoniker": "Business\\Interfaces\\IAccountService.cs",
-              "ToolTip": "D:\\ReposVs\\Manga4ka\\Business\\Interfaces\\IAccountService.cs",
-              "RelativeToolTip": "Business\\Interfaces\\IAccountService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAArAAAA",
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AuthorController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AuthorController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAowCYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T13:57:48.428Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-10-15T21:02:22.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PdfFileController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\PdfFileController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\PdfFileController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\PdfFileController.cs",
+              "RelativeToolTip": "Api\\Controllers\\PdfFileController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAwwBEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T20:59:46.991Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Data\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "Data\\Interfaces\\IUserRepository.cs",
-              "ToolTip": "D:\\ReposVs\\Manga4ka\\Data\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "Data\\Interfaces\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA1AAAA",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAA1wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T13:25:18.852Z",
-              "IsPinned": true
+              "WhenOpened": "2024-10-15T20:31:55.151Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Data\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Data\\Repositories\\UserRepository.cs",
-              "ToolTip": "D:\\ReposVs\\Manga4ka\\Data\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "Data\\Repositories\\UserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Title": "MangaController.cs",
+              "DocumentMoniker": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\MangaController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\MangaController.cs",
+              "ToolTip": "D:\\ReposVs\\Manga4ka\\Api\\Controllers\\MangaController.cs",
+              "RelativeToolTip": "Api\\Controllers\\MangaController.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAIwDIAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T13:24:56.958Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "WhenOpened": "2024-10-15T19:35:23.988Z",
+              "EditorCaption": ""
             }
           ]
         }

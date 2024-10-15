@@ -47,11 +47,10 @@ public class AccountController(IAccountService accountService) : ControllerBase
 
     [Authorize]
     [HttpGet("currentUser")]
-    public IActionResult GetCurrentUser()
+    public async Task<ActionResult> GetCurrentUserAsync()
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         var username = User.FindFirst(ClaimTypes.Name)?.Value;
-
-        return Ok(new { userId, username });
+        return Ok(await _accountService.GetUserByIdAsync(userId));
     }
 }

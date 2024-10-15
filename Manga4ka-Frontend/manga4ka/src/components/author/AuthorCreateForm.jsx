@@ -44,7 +44,7 @@ function AuthorCreateForm() {
         console.log(author)
         const fetchCreateAuthor = async () => {
             try {
-                const status = await AuthorService.CreateAuthor(author)
+                const status = await AuthorService.CreateAuthor(author, localStorage.getItem('token'))
                 if (status === 200) {
                     setAuthor(emptyAuthor)
                     Swal.fire({

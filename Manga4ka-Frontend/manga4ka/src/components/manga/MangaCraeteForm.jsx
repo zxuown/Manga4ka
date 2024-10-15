@@ -50,8 +50,8 @@ function MangaCreateForm() {
     
         if (file) {
             try {
-                const pdfUrl = await PdfService.uploadPdf(file)
-
+                const pdfUrl = await PdfService.uploadPdf(file, localStorage.getItem('token'))
+                console.log(pdfUrl)
                 setManga({
                     ...manga,
                     pdfile: pdfUrl
@@ -72,7 +72,7 @@ function MangaCreateForm() {
         console.log(manga)
         const fetchCreateManga = async () => {
             try {
-                const status = await MangaService.CreateManga(manga)
+                const status = await MangaService.CreateManga(manga, localStorage.getItem('token'))
                 if (status === 200) {
                     setManga(emptyManga)
                     Swal.fire({
@@ -212,8 +212,6 @@ function MangaCreateForm() {
                         <input
                             type="file"
                             className={`form-control ${darkMode ? 'bg-dark text-white' : 'bg-light'}`}
-                            id="pdfile"
-                            name="pdfile"
                             accept=".pdf"
                             onChange={handlePdfUpload} 
                         />

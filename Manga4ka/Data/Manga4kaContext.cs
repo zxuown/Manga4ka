@@ -21,6 +21,11 @@ public class Manga4kaContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<FavoriteManga> FavoriteManga { get; set; }
+
+    public virtual DbSet<Comment> Comments { get; set; }
+
+    public virtual DbSet<Rating> Ratings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

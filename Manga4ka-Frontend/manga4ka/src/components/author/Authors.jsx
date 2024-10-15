@@ -6,15 +6,17 @@ import ThemeContext from '../../context/ThemeContext';
 import Rating from 'react-rating-stars-component'
 import AuthorService from '../../services/AuthorService';
 import PropTypes from 'prop-types';
+import AuthContext from '../../context/AuthContext';
 
 function Authors({ filteredAuthors }) {
     const [authors, setAuthors] = useState([])
     const { darkMode } = useContext(ThemeContext)
+    const { user } = useContext(AuthContext)
 
     const handleDelete = (id) => {
         const fetchDeleteAuthor = async () => {
             try {
-                const status = await AuthorService.DeleteAuthor(id)
+                const status = await AuthorService.DeleteAuthor(id, localStorage.getItem('token'))
                 setAuthors(authors => authors.filter(author => author.id != id))
                 console.log(status)
                 if (status === 200) {
@@ -57,7 +59,11 @@ function Authors({ filteredAuthors }) {
     return (
         <>
             <div className='row justify-content-center'>
-                <Link to={`/authors/create`} className="card-link btn btn-primary">Create</Link>
+                {
+                    user !== undefined && Array.isArray(user.roles) && user.roles.some(x => x == "Admin") ?
+                        <Link to={`/authors/create`} className="card-link btn btn-primary">Create</Link>
+                        : ""
+                }
                 {authors.map((author, index) => (
                     <div key={index} className={`card mb-3 m-3 col-md-3 ${darkMode ? 'bg-dark text-white' : 'bg-light'}`} style={{ maxWidth: 400 }}>
                         <div className="row g-0">
@@ -79,10 +85,13 @@ function Authors({ filteredAuthors }) {
                                         edit={false}
                                     />
                                 </div>
-                                <div className="card-footer">
-                                    <Link to={`/authors/edit/${author.id}`} className="card-link btn btn-warning">Edit</Link>
-                                    <a onClick={() => handleDelete(author.id)} className="card-link btn btn-danger">Delete</a>
-                                </div>
+                                {
+                                     Array.isArray(user.roles) && user.roles.some(x => x === "Admin") ?
+                                        <div className="card-footer">
+                                            <Link to={`/authors/edit/${author.id}`} className="card-link btn btn-warning">Edit</Link>
+                                            <a onClick={() => handleDelete(author.id)} className="card-link btn btn-danger">Delete</a>
+                                        </div> : ""
+                                }
                             </div>
                         </div>
                     </div>

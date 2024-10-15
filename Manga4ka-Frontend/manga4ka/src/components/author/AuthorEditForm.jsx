@@ -35,7 +35,7 @@ function AuthorEditForm() {
         e.preventDefault()
         const fetchCreateAuthor = async () => {
             try {
-                const status = await AuthorService.UpdateAuthor(authorId, author)
+                const status = await AuthorService.UpdateAuthor(authorId, author, localStorage.getItem('token'))
                 if (status === 200) {
                     Swal.fire({
                         title: 'Success!',

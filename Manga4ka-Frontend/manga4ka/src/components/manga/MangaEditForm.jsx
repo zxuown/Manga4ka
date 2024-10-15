@@ -41,7 +41,7 @@ function MangaEditForm() {
 
         if (file) {
             try {
-                const pdfUrl = await PdfService.uploadPdf(file)
+                const pdfUrl = await PdfService.uploadPdf(file, localStorage.getItem('token'))
 
                 setManga({
                     ...manga,
@@ -56,12 +56,13 @@ function MangaEditForm() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()    
+        e.preventDefault()
         manga.author = authors.find(author => author.id == manga.author)
         manga.genres = genres.filter(genre => manga.genres.includes(genre.id.toString()))
+        console.log(manga)
         const fetchUpdateManga = async () => {
             try {
-                const status = await MangaService.UpdateManga(mangaId, manga)
+                const status = await MangaService.UpdateManga(mangaId, manga, localStorage.getItem('token'))
                 if (status === 200) {
                     Swal.fire({
                         title: 'Success!',
@@ -215,12 +216,11 @@ function MangaEditForm() {
                         <input
                             type="file"
                             className={`form-control ${darkMode ? 'bg-dark text-white' : 'bg-light'}`}
-                            id="pdfile"
-                            name="pdfile"
                             accept=".pdf"
                             onChange={handlePdfUpload}
                         />
                     </div>
+
 
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

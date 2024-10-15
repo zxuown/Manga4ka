@@ -15,7 +15,7 @@ function GenreCreateForm() {
 
     const [genre, setGenre] = useState({ emptyGenre })
 
-    const {darkMode} = useContext(ThemeContext)
+    const { darkMode } = useContext(ThemeContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -41,7 +41,7 @@ function GenreCreateForm() {
         genre.id = 0
         const fetchCreateGenre = async () => {
             try {
-                const status = await GenreService.CreateGenre(genre)
+                const status = await GenreService.CreateGenre(genre, localStorage.getItem('token'))
                 if (status === 200) {
                     setGenre(emptyGenre);
                     Swal.fire({

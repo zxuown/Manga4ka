@@ -20,12 +20,12 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ThemeContext from './context/ThemeContext';
 import AuthContext from './context/AuthContext';
-import AuthService from './services/AuthService';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("darkMode") === "true" ? true : false
   })
+
   const [user, setUser] = useState({})
 
   const toggleDarkMode = () => {
@@ -35,19 +35,6 @@ function App() {
     })
   }
 
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        const user = await AuthService.GetCurrentUser()
-        setUser(user)
-      } catch (e) {
-        console.error("Current user error", e)
-      }
-    }
-    if (localStorage.getItem("token")) {
-      fetchCurrentUser()
-    }
-  }, [])
 
   useEffect(() => {
     darkMode ?

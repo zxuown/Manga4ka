@@ -2,6 +2,7 @@
 using Manga4ka.Business.Models;
 using Manga4ka.Business.Services;
 using Manga4ka.Data.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manga4ka.Api.Controllers;
@@ -14,6 +15,7 @@ public class PdfFileController(IPdfFileService pdfFileService, IUnitOfWork unitO
 
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
+    [Authorize(Roles = "Admin")]
     [HttpPost("upload")]
     public async Task<ActionResult> UploadFile([FromForm] FileWrapperDto file)
     {
@@ -40,6 +42,7 @@ public class PdfFileController(IPdfFileService pdfFileService, IUnitOfWork unitO
         }
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("delete/{mangaId}")]
     public async Task DeleteFile(int mangaId)
     {

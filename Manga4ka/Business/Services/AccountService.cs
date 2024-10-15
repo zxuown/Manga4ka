@@ -33,13 +33,20 @@ public class AccountService(IUnitOfWork unitOfWork, IMapper mapper, IConfigurati
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_config["Tokens:Token"]);
+        var claims = new List<Claim>
+        {
+             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+             new Claim(ClaimTypes.Name, user.Name),
+        };
+
+        foreach (var role in user.Roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new []
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Name),
-            }),
+            Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddDays(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
@@ -52,5 +59,10 @@ public class AccountService(IUnitOfWork unitOfWork, IMapper mapper, IConfigurati
     public async Task<bool> UserExists(string loginOrEmail)
     {
         return await _unitOfWork.Users.UserExists(loginOrEmail);
+    }
+
+    public async Task<UserDto> GetUserByIdAsync(int id)
+    {
+        return _mapper.Map<UserDto>(await _unitOfWork.Users.GetByIdAsync(id));
     }
 }

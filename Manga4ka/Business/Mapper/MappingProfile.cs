@@ -14,5 +14,13 @@ public class MappingProfile : Profile
         CreateMap<Manga, MangaDto>();
         CreateMap<MangaDto, Manga>();
         CreateMap<RegisterDto, User>();
+        CreateMap<FavoriteMangaDto, FavoriteManga>();
+        CreateMap<FavoriteManga, FavoriteMangaDto>();
+        CreateMap<UserDto, User>();
+        CreateMap<User, UserDto>();
+        CreateMap<CommentDto, Comment>();
+        CreateMap<Comment, CommentDto>();
+        CreateMap<RatingDto, Rating>();
+        CreateMap<Rating, RatingDto>();
     }
 }

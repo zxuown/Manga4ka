@@ -1,8 +1,20 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const API = 'https://localhost:7242/account';
 
 class AuthService {
+
+    static isTokenExpired(token) {
+        if (!token) return true;
+
+       const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+        console.log(decodedToken)
+       return decodedToken.exp < currentTime;
+    }
+
+
     static async Register(registerData) {
         try {
             const response = await axios.post(`${API}/register`, registerData, {

@@ -47,6 +47,58 @@ namespace Manga4ka.Migrations
                     b.ToTable("Authors");
                 });
 
+            modelBuilder.Entity("Manga4ka.Data.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DatePublished")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MangaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MangaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Manga4ka.Data.Entities.FavoriteManga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MangaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MangaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteManga");
+                });
+
             modelBuilder.Entity("Manga4ka.Data.Entities.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -120,6 +172,30 @@ namespace Manga4ka.Migrations
                     b.ToTable("MangaGenres");
                 });
 
+            modelBuilder.Entity("Manga4ka.Data.Entities.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MangaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MangaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("Manga4ka.Data.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -145,9 +221,51 @@ namespace Manga4ka.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Roles")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Manga4ka.Data.Entities.Comment", b =>
+                {
+                    b.HasOne("Manga4ka.Data.Entities.Manga", "Manga")
+                        .WithMany()
+                        .HasForeignKey("MangaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Manga4ka.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Manga");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Manga4ka.Data.Entities.FavoriteManga", b =>
+                {
+                    b.HasOne("Manga4ka.Data.Entities.Manga", "Manga")
+                        .WithMany()
+                        .HasForeignKey("MangaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Manga4ka.Data.Entities.User", "User")
+                        .WithMany("FavoriteManga")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Manga");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Manga4ka.Data.Entities.Manga", b =>
@@ -180,6 +298,25 @@ namespace Manga4ka.Migrations
                     b.Navigation("Manga");
                 });
 
+            modelBuilder.Entity("Manga4ka.Data.Entities.Rating", b =>
+                {
+                    b.HasOne("Manga4ka.Data.Entities.Manga", "Manga")
+                        .WithMany()
+                        .HasForeignKey("MangaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Manga4ka.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Manga");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Manga4ka.Data.Entities.Genre", b =>
                 {
                     b.Navigation("MangaGenres");
@@ -188,6 +325,11 @@ namespace Manga4ka.Migrations
             modelBuilder.Entity("Manga4ka.Data.Entities.Manga", b =>
                 {
                     b.Navigation("MangaGenres");
+                });
+
+            modelBuilder.Entity("Manga4ka.Data.Entities.User", b =>
+                {
+                    b.Navigation("FavoriteManga");
                 });
 #pragma warning restore 612, 618
         }

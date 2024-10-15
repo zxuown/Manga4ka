@@ -35,7 +35,7 @@ function GenreEditForm() {
         e.preventDefault()
         const fetchEditGenre = async () => {
             try {
-                const status = await GenreService.EditGenre(genreId, genre)
+                const status = await GenreService.EditGenre(genreId, genre, localStorage.getItem('token'))
                 if (status === 200) {
                     setGenre({});
                     Swal.fire({

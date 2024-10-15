@@ -1,6 +1,7 @@
 ﻿using Manga4ka.Business.Interfaces;
 using Manga4ka.Business.Models;
 using Manga4ka.Data.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manga4ka.Api.Controllers;
@@ -29,6 +30,7 @@ public class GenreController(IGenreService genreService) : ControllerBase
         return Ok(await _service.GetGenreByIdAsync(id));
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<ActionResult> AddGenre([FromBody]GenreDto genre)
     {
@@ -36,6 +38,7 @@ public class GenreController(IGenreService genreService) : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateGenre([FromBody]GenreDto genre)
     {
@@ -43,6 +46,7 @@ public class GenreController(IGenreService genreService) : ControllerBase
         return Ok();
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteGenre(int id)
     {
