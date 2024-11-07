@@ -1,0 +1,357 @@
+{
+  "manga": [
+    {
+      "id": "1",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTI1MmI4NzItYTg2Yy00NmVkLWIwY2EtZTdhZTNkOTQ5OTZjXkEyXkFqcGdeQXVyNzI3NjY3NjQ@._V1_FMjpg_UX1000_.jpg",
+      "title": "One Piece",
+      "description": "A story about a young pirate, Monkey D. Luffy, as he searches for the ultimate treasure, One Piece.",
+      "posted": "2024-01-01",
+      "authorid": "101",
+      "genres": [
+        "1",
+        "3",
+        "5"
+      ],
+      "mangaUrl": "public/OnePiece.pdf"
+    },
+    {
+      "id": "2",
+      "image": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg",
+      "title": "Naruto",
+      "description": "Naruto Uzumaki, a young ninja with dreams of becoming the strongest ninja and the leader of his village.",
+      "posted": "2024-02-10",
+      "authorid": "102",
+      "genres": [
+        "2",
+        "4",
+        "6"
+      ],
+      "mangaUrl": "/public/Naruto.pdf"
+    },
+    {
+      "id": "3",
+      "image": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10701949_b_v8_ah.jpg",
+      "title": "Attack on Titan",
+      "description": "Humanity fights for survival against gigantic humanoid creatures known as Titans.",
+      "posted": "2024-03-15",
+      "authorid": "103",
+      "genres": [
+        "1",
+        "4",
+        "7"
+      ],
+      "mangaUrl": "/public/AttackonTitan.pdf"
+    },
+    {
+      "id": "4",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2I3NzkwOTQtMjVmOC00MDQ2LThmYzgtZGQ0NDQwNDJmNDcxXkEyXkFqcGdeQXVyNTc3MDU1MTU@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "title": "My Hero Academia",
+      "description": "In a world where nearly everyone has superpowers, a boy without powers enrolls in a hero academy.",
+      "posted": "2024-04-05",
+      "authorid": "104",
+      "genres": [
+        "3",
+        "5",
+        "8"
+      ],
+      "mangaUrl": "/public/MyHeroAcademia.pdf"
+    },
+    {
+      "id": "5",
+      "image": "https://m.media-amazon.com/images/M/MV5BZjZjNzI5MDctY2Y4YS00NmM4LTljMmItZTFkOTExNGI3ODRhXkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_.jpg",
+      "title": "Demon Slayer",
+      "description": "Tanjiro Kamado, a kind-hearted boy, becomes a demon slayer to avenge his family and cure his sister.",
+      "posted": "2024-05-20",
+      "authorid": "105",
+      "genres": [
+        "2",
+        "4",
+        "9"
+      ],
+      "mangaUrl": "/public/DemonSlayer.pdf"
+    },
+    {
+      "id": "6",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTM5ZjA2YWMtYjY3Ny00ZDU1LTk1NjYtMzhjMGY5ZmZkMzgwL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg",
+      "title": "Tokyo Ghoul",
+      "description": "Kaneki Ken, a college student, becomes a half-ghoul after a fateful encounter and struggles with his new identity.",
+      "posted": "2024-06-01",
+      "authorid": "106",
+      "genres": [
+        "1",
+        "6",
+        "10"
+      ],
+      "mangaUrl": "/public/TokyoGhoul.pdf"
+    },
+    {
+      "id": "7",
+      "image": "https://m.media-amazon.com/images/I/91fhhUusE1L._AC_UF894,1000_QL80_.jpg",
+      "title": "Fullmetal Alchemist",
+      "description": "Two brothers use alchemy to try to restore their bodies after a failed alchemy experiment.",
+      "posted": "2024-07-10",
+      "authorid": "107",
+      "genres": [
+        "2",
+        "3",
+        "11"
+      ],
+      "mangaUrl": "/public/FullmetalAlchemist.pdf"
+    },
+    {
+      "id": "8",
+      "image": "https://static.posters.cz/image/750/death-note-from-the-shadows-i58005.jpg",
+      "title": "Death Note",
+      "description": "A high school student discovers a supernatural notebook that allows him to kill anyone by writing their name.",
+      "posted": "2024-08-18",
+      "authorid": "108",
+      "genres": [
+        "1",
+        "9",
+        "12"
+      ],
+      "mangaUrl": "/public/DeathNote.pdf"
+    },
+    {
+      "id": "9",
+      "image": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/35e4ac6339f5fdcc164160a5755790cd.jpg",
+      "title": "Dragon Ball",
+      "description": "The adventures of Goku, who seeks the Dragon Balls to summon a wish-granting dragon.",
+      "posted": "2024-09-05",
+      "authorid": "109",
+      "genres": [
+        "2",
+        "6",
+        "13"
+      ],
+      "mangaUrl": "/public/DragonBall.pdf"
+    },
+    {
+      "id": "10",
+      "image": "https://upload.wikimedia.org/wikipedia/en/7/72/Bleachanime.png",
+      "title": "Bleach",
+      "description": "Ichigo Kurosaki, a high school student, becomes a Soul Reaper to protect the living from evil spirits.",
+      "posted": "2024-10-22",
+      "authorid": "110",
+      "genres": [
+        "3",
+        "7",
+        "14"
+      ],
+      "mangaUrl": "/public/Bleach.pdf"
+    },
+    {
+      "id": "3106",
+      "image": "C:\\fakepath\\FullmetalAlchemist.pdf",
+      "title": "Test sweatallert",
+      "description": "Test sweatallertTest sweatallertTest sweatallertTest sweatallertTest sweatallertTest sweatallert",
+      "posted": "2024-09-07",
+      "authorid": "109",
+      "genres": [
+        "1",
+        "2",
+        "3"
+      ],
+      "mangaUrl": "C:\\fakepath\\b189922eab130325a3995bfa1a3021eb.gif"
+    },
+    {
+      "id": "7117",
+      "image": "C:\\fakepath\\Bleach.pdf",
+      "title": "wegewgw",
+      "description": "egwegwegwegw",
+      "posted": "2024-09-07",
+      "authorid": "7307",
+      "genres": [
+        "1",
+        "2",
+        "3",
+        "13"
+      ],
+      "mangaUrl": "C:\\fakepath\\DeathNote.pdf"
+    }
+  ],
+  "genres": [
+    {
+      "id": "1",
+      "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/06/18-kick-ass-anime-that-are-non-stop-action.jpg",
+      "title": "Action",
+      "description": "Action manga are known for dynamic fight scenes, epic battles, and fast-paced storylines. This genre often involves strong characters engaging in intense physical conflicts."
+    },
+    {
+      "id": "2",
+      "image": "https://asset-2.tstatic.net/gorontalo/foto/bank/images/3-rekomendasi-anime-adventure-selain-di-anoBoy-18-Oktober-2022.jpg",
+      "title": "Adventure",
+      "description": "Adventure manga often focus on characters embarking on journeys filled with challenges, exploration of new worlds, and encounters with various obstacles."
+    },
+    {
+      "id": "3",
+      "image": "https://i.pinimg.com/736x/81/1c/0a/811c0a67524d0c66c5b9c4f7999e654a.jpg",
+      "title": "Comedy",
+      "description": "Comedy manga bring lighthearted entertainment, using humor to make readers laugh through funny situations, witty dialogues, and quirky characters."
+    },
+    {
+      "id": "4",
+      "image": "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2024/05/fantasy-anime.jpg",
+      "title": "Fantasy",
+      "description": "Fantasy manga take place in imaginative worlds filled with magic, mythical creatures, and supernatural elements. These stories often revolve around quests and battles against dark forces."
+    },
+    {
+      "id": "5",
+      "image": "https://assets-prd.ignimgs.com/2023/09/26/best-shonen-anime-thumbnail-1695765163225.jpg",
+      "title": "Shonen",
+      "description": "Shonen manga are typically aimed at young male audiences, focusing on action, friendship, rivalry, and growth through hard work and perseverance."
+    },
+    {
+      "id": "6",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/10/The-10-Best-Martial-Artists-in-Anime.jpg",
+      "title": "Martial Arts",
+      "description": "Martial arts manga feature characters mastering various combat techniques, often set in tournaments or focused on achieving personal strength and skill."
+    },
+    {
+      "id": "7",
+      "image": "https://img.freepik.com/free-photo/anime-style-boy-girl-couple_23-2151451479.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724371200&semt=ais_hybrid",
+      "title": "Drama",
+      "description": "Drama manga emphasize emotional and psychological development, often involving complex relationships and intense, sometimes tragic, events."
+    },
+    {
+      "id": "8",
+      "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/09/collage-maker-11-sep-2023-08-16-am-3578.jpg",
+      "title": "Superpower",
+      "description": "Superpower manga involve characters with extraordinary abilities, often set in worlds where individuals possess unique powers that set them apart from ordinary humans."
+    },
+    {
+      "id": "9",
+      "image": "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/06/death-note-tokyo-ghoul-parasyte-the-maxim.jpg",
+      "title": "Horror",
+      "description": "Horror manga are designed to elicit fear and unease, often involving supernatural creatures, disturbing imagery, and psychological terror."
+    },
+    {
+      "id": "10",
+      "image": "https://indigomusic.com/wp-content/uploads/2024/03/Untitled-design-84-1024x576.png",
+      "title": "Psychological",
+      "description": "Psychological manga delve into the human mind, exploring themes of mental conflict, moral ambiguity, and the darker sides of human nature."
+    },
+    {
+      "id": "11",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2019/07/Sci-Fi-anime-feature.jpg",
+      "title": "Sci-Fi",
+      "description": "Sci-Fi manga incorporate futuristic technology, space exploration, and advanced scientific concepts, often questioning the impact of such developments on humanity."
+    },
+    {
+      "id": "12",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/03/The-Best-Psychological-Thriller-Anime-to-Watch-After-Death-Note.jpg",
+      "title": "Thriller",
+      "description": "Thriller manga keep readers on the edge of their seats with suspenseful storylines, often involving mysteries, chases, and intense moments of tension."
+    },
+    {
+      "id": "13",
+      "image": "https://cdn.oneesports.gg/cdn-data/2023/10/Anime_BestFightingAnime_DragonBallZGoku_JujutsuKaisenGojoSatoru_MyHeroAcademiaAllMight.jpg",
+      "title": "Fighting",
+      "description": "Fighting manga are heavily focused on hand-to-hand combat, duels, and battles, often set in competitions or rivalries between skilled fighters."
+    },
+    {
+      "id": "14",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/01/10-Best-Manga-With-Supernatural-Themes-According-To-MyAnimeList.jpg",
+      "title": "Supernatural",
+      "description": "Supernatural manga involve elements that defy the laws of nature, such as ghosts, spirits, and other paranormal phenomena."
+    }
+  ],
+  "authors": [
+    {
+      "id": "101",
+      "image": "https://miro.medium.com/v2/resize:fit:621/1*DLJ3UGHPWDtrzfcMTYjfZw.jpeg",
+      "name": "Eiichiro",
+      "lastname": "Oda",
+      "dateOfBirth": "1975-01-01",
+      "description": "The creator of One Piece, known for his detailed world-building and unique art style."
+    },
+    {
+      "id": "102",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSylt_TzeLDlNWOlPgwagz_sz7KZxSgzNnW-g&s",
+      "name": "Masashi",
+      "lastname": "Kishimoto",
+      "dateOfBirth": "1974-11-08",
+      "description": "The author of Naruto, famous for his influential work in the shonen genre."
+    },
+    {
+      "id": "103",
+      "image": "https://www.hindustantimes.com/ht-img/img/2023/11/04/550x309/Hajime_Isayama_1699099193712_1699099204816.png",
+      "name": "Hajime",
+      "lastname": "Isayama",
+      "dateOfBirth": "1986-08-29",
+      "description": "The mind behind Attack on Titan, known for his intense storytelling and dark themes."
+    },
+    {
+      "id": "104",
+      "image": "https://i.ytimg.com/vi/gQkhzdPGCkE/maxresdefault.jpg",
+      "name": "Kohei",
+      "lastname": "Horikoshi",
+      "dateOfBirth": "1986-04-20",
+      "description": "The creator of My Hero Academia, recognized for his dynamic action scenes and diverse character designs."
+    },
+    {
+      "id": "105",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcctevQm01jbMcu9vM9YKiDLpQokyKHT_F_A&s",
+      "name": "Koyoharu",
+      "lastname": "Gotouge",
+      "dateOfBirth": "1989-05-05",
+      "description": "The author of Demon Slayer, noted for their emotional storytelling and beautiful art."
+    },
+    {
+      "id": "106",
+      "image": "https://pbs.twimg.com/media/FAOor2JXsAc2Uhf.jpg",
+      "name": "Sui",
+      "lastname": "Ishida",
+      "dateOfBirth": "1986-12-18",
+      "description": "The creator of Tokyo Ghoul, known for their unique take on horror and psychological themes."
+    },
+    {
+      "id": "107",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/08/10-things-you-didn-t-know-about-hiromu-arakawa-feature.jpg",
+      "name": "Hiromu",
+      "lastname": "Arakawa",
+      "dateOfBirth": "1973-05-08",
+      "description": "The author of Fullmetal Alchemist, famous for intricate plotlines and strong character development."
+    },
+    {
+      "id": "108",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQElxs2IlPMeT4BFcOaT999QNvscddXxhXfzg&s",
+      "name": "Tsugumi",
+      "lastname": "Ohba",
+      "dateOfBirth": "1969-08-27",
+      "description": "Co-author of Death Note, known for creating gripping psychological thrillers."
+    },
+    {
+      "id": "109",
+      "image": "https://miro.medium.com/v2/resize:fit:720/1*0DTY_a-nB4v_nhtRG0Z3KA.jpeg",
+      "name": "Akira",
+      "lastname": "Toriyama",
+      "dateOfBirth": "1955-04-05",
+      "description": "The legendary creator of Dragon Ball, renowned for his impact on manga and anime."
+    },
+    {
+      "id": "110",
+      "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/08/tite-kubo-and-bleach.jpg",
+      "name": "Tite",
+      "lastname": "Kubo",
+      "dateOfBirth": "1977-06-26",
+      "description": "The author of Bleach, celebrated for his stylish character designs and action-packed storylines."
+    },
+    {
+      "id": "7307",
+      "emptyAuthor": {
+        "id": "",
+        "image": "",
+        "name": "",
+        "secondName": "",
+        "dateOfBirth": "",
+        "description": ""
+      },
+      "image": "C:\\fakepath\\FullmetalAlchemist.pdf",
+      "name": "sbbsbs",
+      "lastname": "bsbsbsbsbs",
+      "dateOfBirth": "2024-09-28",
+      "description": "qwfqwfwqfwqfqfq"
+    }
+  ]
+}

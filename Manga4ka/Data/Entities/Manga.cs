@@ -12,7 +12,7 @@ public class Manga : BaseEntity
 
     public DateTime DatePublished { get; set; }
 
-    public virtual ICollection<MangaGenre> MangaGenres { get; set; }
+   // public virtual ICollection<MangaGenre> MangaGenres { get; set; }
 
     [ForeignKey(nameof(Author))]
 

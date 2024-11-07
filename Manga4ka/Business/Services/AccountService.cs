@@ -12,21 +12,25 @@ namespace Manga4ka.Business.Services;
 
 public class AccountService(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration) : IAccountService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private IUnitOfWork _unitOfWork { get; } = unitOfWork;
 
-    private readonly IMapper _mapper = mapper;
+    private IMapper _mapper { get; } = mapper;
 
-    private readonly IConfiguration _config = configuration;
+    private IConfiguration _config { get; } = configuration;
     public async Task Register(RegisterDto registerDto)
     {
-        await _unitOfWork.Users.Register(_mapper.Map<User>(registerDto));
+        var user = _mapper.Map<User>(registerDto);
+        user.Roles ??= new List<string>();
+        user.Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+        user.Roles.Add("User");
+        await _unitOfWork.Users.Register(user);
         await _unitOfWork.SaveAsync();
     }
 
     public async Task<string> Login(LoginDto loginDto)
     {
         var user = await _unitOfWork.Users.Login(loginDto.LoginOrEmail, loginDto.Password);
-        if (user == null)
+        if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
         {
             return null;
         }

@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Manga4ka.Business.Models;
 
-public class CommentDto
+public record CommentDto
 {
-    public int Id { get; set; }
-    public UserDto User { get; set; }
-    public MangaDto Manga { get; set; }
-    public string Text { get; set; }
-    public DateTime DatePublished { get; set; }
+    public int Id { get; init; }
+    public UserDto User { get; init; }
+    public MangaDto Manga { get; init; }
+    public string Text { get; init; }
+    public DateTime DatePublished { get; init; }
 }

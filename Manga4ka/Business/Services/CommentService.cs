@@ -8,9 +8,9 @@ namespace Manga4ka.Business.Services;
 
 public class CommentService(IUnitOfWork unitOfWork, IMapper mapper) : ICommentService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private IUnitOfWork _unitOfWork { get; } = unitOfWork;
 
-    private readonly IMapper _mapper = mapper;
+    private IMapper _mapper { get; } = mapper;
     public async Task AddCommentAsync(CommentDto commentDto)
     {
         var comment = _mapper.Map<Comment>(commentDto);
@@ -30,12 +30,10 @@ public class CommentService(IUnitOfWork unitOfWork, IMapper mapper) : ICommentSe
         await _unitOfWork.Comments.DeleteAsync(id);
         await _unitOfWork.SaveAsync();
     }
-
     public async Task<IEnumerable<CommentDto>> GetAllCommentsByMangaIdAsync(int mangaId)
     {
         return _mapper.Map<IEnumerable<CommentDto>>(await _unitOfWork.Comments.GetAllCommentsByMangaIdAsync(mangaId));
     }
-
     public async Task<CommentDto> GetCommentByIdAsync(int id)
     {
         return _mapper.Map<CommentDto>(await _unitOfWork.Comments.GetByIdAsync(id));

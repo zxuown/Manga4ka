@@ -7,7 +7,7 @@ public interface IPdfFileService
 {
     Task<string> UploadAsync(IFormFile pdfFile);
     
-    Task<FileResult> GetPdfFileAsync(string pdfFilePath);
+    Task<FileResult> GetPdfFileAsync(int mangaId);
 
-    void Remove(string path);
+    Task Remove(int mangaId);
 }

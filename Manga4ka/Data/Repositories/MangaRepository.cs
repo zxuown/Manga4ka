@@ -4,7 +4,6 @@ using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Manga4ka.Business.Models;
 using System.Collections.Generic;
-using Manga4ka.Migrations;
 
 public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(context), IMangaRepository
 {
@@ -13,15 +12,31 @@ public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(co
         var manga = await GetAllAsync();
         return manga.Where(x => x.Title.ToLower().Contains(query.ToLower()));
     }
-    public async new Task<IEnumerable<Manga>> GetAllAsync()
+    public override async Task<IEnumerable<Manga>> GetAllAsync()
     {
-        return await _entities.Include(x => x.Author).Include(x => x.MangaGenres).ThenInclude(x => x.Genre).ToListAsync();
+        return await _entities.Include(x => x.Author).ToListAsync();
     }
-    public async new Task<Manga> GetByIdAsync(int id)
+    public async Task<IEnumerable<MangaGenre>> GetAllMangaGenresAsync()
+    {
+        return await _context.MangaGenres.Include(x => x.Manga).Include(x => x.Genre).ToListAsync();
+    }
+    public async Task<IEnumerable<MangaGenre>> GetAllMangaGenresByMangaIdAsync(int mangaId)
+    {
+        var mangaGernes = _context.MangaGenres.ToList();
+        var res = await _context.MangaGenres.Include(x => x.Manga).ThenInclude(x => x.Author).Include(x => x.Genre).Where(x => x.MangaId == mangaId).ToListAsync();
+        return await _context.MangaGenres.Include(x => x.Manga).ThenInclude(x => x.Author).Include(x => x.Genre).Where(x => x.MangaId == mangaId).ToListAsync();
+    }
+    public async Task AddMangaGenreAsync(MangaGenre mangaGenre)
+    {
+        await _context.MangaGenres.AddAsync(mangaGenre);
+    }
+    public async Task DeleteMangaGenreAsync(int id)
+    {
+        _context.MangaGenres.Remove(await _context.MangaGenres.FirstOrDefaultAsync(x => x.Id == id));
+    }
+    public override async Task<Manga> GetByIdAsync(int id)
     {
         return await _entities.Include(x => x.Author)
-            .Include(x => x.MangaGenres)
-            .ThenInclude(x => x.Genre)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
     public async Task AddFavoriteMangaAsync(FavoriteManga favoriteManga)
@@ -30,21 +45,19 @@ public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(co
     }
     public async Task DeleteFavoriteMangaAsync(int mangaId, int userId)
     {
-        var favoriteManga = _context.FavoriteManga.Where(x => x.MangaId == mangaId && x.UserId == userId);
-        foreach (var item in favoriteManga)
+        var mangaList = await _context.FavoriteManga.Where(x => x.MangaId == mangaId && x.UserId == userId).ToListAsync();
+        foreach (var item in mangaList)
         {
             _context.FavoriteManga.Remove(item);
         }
     }
     public async Task<IEnumerable<Manga>> SortByPublishedAscAsync()
     {
-        var manga = await GetAllAsync();
-        return manga.OrderBy(x => x.DatePublished);
+        return await _entities.Include(x => x.Author).OrderBy(x => x.DatePublished).ToListAsync();
     }
     public async Task<IEnumerable<Manga>> SortByPublishedDescAsync()
     {
-        var manga = await GetAllAsync();
-        return manga.OrderByDescending(x => x.DatePublished);
+        return await _entities.Include(x => x.Author).OrderByDescending(x => x.DatePublished).ToListAsync();
     }
     public async Task<IEnumerable<Manga>> SortByRatingAscAsync()
     {
@@ -54,7 +67,7 @@ public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(co
     {
         return await SortByRatingAsync(ascending: false);
     }
-    private async Task<IEnumerable<Manga>> SortByRatingAsync(bool ascending)
+    public async Task<IEnumerable<Manga>> SortByRatingAsync(bool ascending)
     {
         var mangaWithRatings = await _context.Ratings
             .GroupBy(r => r.MangaId)
@@ -71,11 +84,9 @@ public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(co
         var sortedManga = await _context.Manga
             .Where(m => mangaIds.Contains(m.Id))
             .Include(m => m.Author)
-            .Include(m => m.MangaGenres)
-            .ThenInclude(g => g.Genre)
             .ToListAsync();
 
-        var mangaDict = sortedManga.ToDictionary(m => m.Id); 
+        var mangaDict = sortedManga.ToDictionary(m => m.Id);
         return mangaWithRatings
             .Select(x => mangaDict[x.MangaId])
             .ToList();
@@ -85,8 +96,6 @@ public class MangaRepository(Manga4kaContext context) : BaseRepository<Manga>(co
         return await _context.FavoriteManga
             .Include(m => m.Manga)
             .ThenInclude(m => m.Author)
-            .Include(m => m.Manga.MangaGenres)
-            .ThenInclude(g => g.Genre)
             .Where(m => m.IsFavorite && m.UserId == userId)
             .Select(x => x.Manga)
             .ToListAsync();

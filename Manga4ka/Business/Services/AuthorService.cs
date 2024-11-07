@@ -3,16 +3,15 @@ using Manga4ka.Business.Interfaces;
 using Manga4ka.Business.Models;
 using Manga4ka.Data.Entities;
 using Manga4ka.Data.Interfaces;
-using Manga4ka.Data.Repositories;
 
 namespace Manga4ka.Business.Services;
 
 public class AuthorService(IUnitOfWork unitOfWork, IMapper mapper) : IAuthorService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private IUnitOfWork _unitOfWork { get; } = unitOfWork;
 
-    private readonly IMapper _mapper = mapper;
-    
+    private IMapper _mapper { get; } = mapper;
+
     public async Task<IEnumerable<AuthorDto>> SearchAuthorsAsync(string query)
     {
         var filteredAuthors = await _unitOfWork.Authors.Search(query);
@@ -23,7 +22,6 @@ public class AuthorService(IUnitOfWork unitOfWork, IMapper mapper) : IAuthorServ
         await _unitOfWork.Authors.AddAsync(_mapper.Map<Author>(author));
         await _unitOfWork.SaveAsync();
     }
-
     public async Task UpdateAuthorAsync(AuthorDto author)
     {
         await _unitOfWork.Authors.UpdateAsync(_mapper.Map<Author>(author));
@@ -34,7 +32,6 @@ public class AuthorService(IUnitOfWork unitOfWork, IMapper mapper) : IAuthorServ
         await _unitOfWork.Authors.DeleteAsync(id);
         await _unitOfWork.SaveAsync();
     }
-
     public async Task<AuthorDto> GetAuthorByIdAsync(int id)
     {
         Author author = await _unitOfWork.Authors.GetByIdAsync(id);

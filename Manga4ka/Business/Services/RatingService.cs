@@ -8,9 +8,9 @@ namespace Manga4ka.Business.Services;
 
 public class RatingService(IUnitOfWork unitOfWork, IMapper mapper) : IRatingService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private IUnitOfWork _unitOfWork { get; } = unitOfWork;
 
-    private readonly IMapper _mapper = mapper;
+    private IMapper _mapper { get; } = mapper;
     public async Task AddRatingAsync(RatingDto entity)
     {
         var rating = _mapper.Map<Rating>(entity);

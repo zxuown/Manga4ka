@@ -1,15 +1,15 @@
 ﻿namespace Manga4ka.Business.Models;
 
-public class AuthorDto
+public record AuthorDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    public int Id { get; init; }
+    public string Name { get; init; }
 
-    public string Lastname { get; set; }
+    public string Lastname { get; init; }
 
-    public string Description { get; set; }
+    public string Description { get; init; }
 
-    public DateTime DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; init; }
 
-    public string Image { get; set; }
+    public string Image { get; init; }
 }

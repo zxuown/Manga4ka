@@ -8,9 +8,9 @@ namespace Manga4ka.Business.Services;
 
 public class GenreService(IUnitOfWork unitOfWork, IMapper mapper) : IGenreService
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private IUnitOfWork _unitOfWork { get; } = unitOfWork;
 
-    private readonly IMapper _mapper = mapper;
+    private IMapper _mapper { get; } = mapper;
 
     public async Task<IEnumerable<GenreDto>> SearchGenreAsync(string query)
     {

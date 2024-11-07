@@ -1,6 +1,6 @@
 ﻿namespace Manga4ka.Business.Models;
 
-public class FileWrapperDto
+public record FileWrapperDto
 {
-    public IFormFile file {  get; set; }
+    public IFormFile file {  get; init; }
 }

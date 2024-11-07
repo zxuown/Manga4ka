@@ -9,19 +9,11 @@ public class UserRepository(Manga4kaContext context) : BaseRepository<User>(cont
 {
     public async Task<User> Login(string loginOrEmail, string password)
     {
-        var user = await _entities.FirstOrDefaultAsync(user => user.Login == loginOrEmail || user.Email == loginOrEmail);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password))
-        {
-            return null;
-        }
-
-        return user;
+        return await _entities.FirstOrDefaultAsync(user => user.Login == loginOrEmail || user.Email == loginOrEmail); ;
     }
 
     public async Task<User> Register(User user)
     {
-        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-        user.Roles.Add("User");
         await _entities.AddAsync(user);
         return user;
     }

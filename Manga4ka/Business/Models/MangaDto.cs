@@ -3,24 +3,18 @@ using System.Text.Json.Serialization;
 
 namespace Manga4ka.Business.Models;
 
-public class MangaDto
+public record MangaDto
 {
-    public int Id { get; set; }
-    public string Title { get; set; }
+    public int Id { get; init; }
+    public string Title { get; init; }
 
-    public string Description { get; set; }
+    public string Description { get; init; }
 
-    public DateTime DatePublished { get; set; }
+    public DateTime DatePublished { get; init; }
 
-    public List<GenreDto> Genres { get; set; }
+    public AuthorDto Author { get; init; }
 
-    [JsonIgnore]
+    public string Image { get; init; }
 
-    public List<MangaGenre> ? MangaGenres { get; set; }
-
-    public AuthorDto Author { get; set; }
-
-    public string Image { get; set; }
-
-    public string Pdfile { get; set; }
+    public string Pdfile { get; init; }
 }

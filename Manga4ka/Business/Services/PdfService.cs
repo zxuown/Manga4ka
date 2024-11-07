@@ -1,15 +1,20 @@
 ﻿using Manga4ka.Business.Interfaces;
+using Manga4ka.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Manga4ka.Business.Services;
 
-public class PdfService(IWebHostEnvironment webHostEnvironment) : IPdfFileService
+public class PdfService(IWebHostEnvironment webHostEnvironment, IConfiguration configuration, IUnitOfWork unitOfWork) : IPdfFileService
 {
-    private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
+    private IWebHostEnvironment _webHostEnvironment { get; } = webHostEnvironment;
+
+    private IConfiguration _configuration { get; } = configuration;
+
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
     public async Task<string> UploadAsync(IFormFile pdfFile)
     {
         string fileName = Guid.NewGuid().ToString() + Path.GetExtension(pdfFile.FileName);
-        string path = Path.Combine("PdfFiles", fileName);
+        string path = Path.Combine(_configuration["Files:Pdf"], fileName);
 
         string directory = Path.GetDirectoryName(path);
         if (!Directory.Exists(directory))
@@ -24,9 +29,10 @@ public class PdfService(IWebHostEnvironment webHostEnvironment) : IPdfFileServic
 
         return path;
     }
-    public async Task<FileResult> GetPdfFileAsync(string pdfFilePath)
+    public async Task<FileResult> GetPdfFileAsync(int mangaId)
     {
-        var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, pdfFilePath);
+        var manga = await _unitOfWork.Manga.GetByIdAsync(mangaId);
+        var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, manga.Pdfile);
 
         if (!File.Exists(fullPath))
         {
@@ -45,8 +51,9 @@ public class PdfService(IWebHostEnvironment webHostEnvironment) : IPdfFileServic
             FileDownloadName = Path.GetFileName(fullPath)
         };
     }
-    public void Remove(string path)
+    public async Task Remove(int mangaId)
     {
-        File.Delete(path);
+        var manga = await _unitOfWork.Manga.GetByIdAsync(mangaId);
+        File.Delete(manga.Pdfile);
     }
 }

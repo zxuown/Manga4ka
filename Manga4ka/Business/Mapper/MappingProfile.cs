@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Manga4ka.Business.Models;
 using Manga4ka.Data.Entities;
+using Manga4ka.Data.Interfaces;
+using Manga4ka.Data.Repositories;
 namespace Manga4ka.Business.Mapper;
 
 public class MappingProfile : Profile
@@ -22,5 +24,8 @@ public class MappingProfile : Profile
         CreateMap<Comment, CommentDto>();
         CreateMap<RatingDto, Rating>();
         CreateMap<Rating, RatingDto>();
+        CreateMap<MangaGenreDto, MangaGenre>();
+        CreateMap<MangaGenre, MangaGenreDto>();
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Manga4ka.Data.Entities;
 
-public class MangaGenre
+public class MangaGenre : BaseEntity
 {
     [ForeignKey(nameof(Manga))]
     public int MangaId { get; set; }
@@ -10,7 +10,7 @@ public class MangaGenre
     [ForeignKey(nameof(Genre))]
     public int GenreId { get; set; }
 
-    public virtual Manga Manga { get; set; }
+    public Manga Manga { get; set; }
 
-    public virtual Genre Genre { get; set; }
+    public Genre Genre { get; set; }
 }

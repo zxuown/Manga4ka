@@ -1,11 +1,11 @@
 ﻿namespace Manga4ka.Business.Models;
 
-public class GenreDto
+public record GenreDto
 {
-    public int Id { get; set; }
-    public string Title { get; set; }
+    public int Id { get; init; }
+    public string Title { get; init; }
 
-    public string Description { get; set; }
+    public string Description { get; init; }
 
-    public string Image { get; set; }
+    public string Image { get; init; }
 }

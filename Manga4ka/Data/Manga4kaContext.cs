@@ -10,7 +10,6 @@ public class Manga4kaContext : DbContext
     {
 
     }
-
     public virtual DbSet<Author> Authors { get; set; }
 
     public virtual DbSet<Manga> Manga { get; set; }
@@ -31,17 +30,6 @@ public class Manga4kaContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<MangaGenre>()
-            .HasKey(mg => new { mg.MangaId, mg.GenreId });
-
-        modelBuilder.Entity<MangaGenre>()
-            .HasOne(mg => mg.Manga)
-            .WithMany(m => m.MangaGenres)
-            .HasForeignKey(mg => mg.MangaId);
-
-        modelBuilder.Entity<MangaGenre>()
-            .HasOne(mg => mg.Genre)
-            .WithMany(g => g.MangaGenres)
-            .HasForeignKey(mg => mg.GenreId);
+       
     }
 }

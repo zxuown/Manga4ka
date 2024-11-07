@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Manga4ka.Business.Models;
 
-public class RatingDto
+public record RatingDto
 {
-    public int Id { get; set; }
-    public UserDto User { get; set; }
-    public MangaDto Manga { get; set; }
-    public int Value { get; set; }
+    public int Id { get; init; }
+    public UserDto User { get; init; }
+    public MangaDto Manga { get; init; }
+    public int Value { get; init; }
 }

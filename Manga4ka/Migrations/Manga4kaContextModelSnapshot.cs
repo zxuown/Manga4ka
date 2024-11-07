@@ -159,15 +159,21 @@ namespace Manga4ka.Migrations
 
             modelBuilder.Entity("Manga4ka.Data.Entities.MangaGenre", b =>
                 {
-                    b.Property<int>("MangaId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("GenreId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("MangaId", "GenreId");
+                    b.Property<int>("MangaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("GenreId");
+
+                    b.HasIndex("MangaId");
 
                     b.ToTable("MangaGenres");
                 });
@@ -288,7 +294,7 @@ namespace Manga4ka.Migrations
                         .IsRequired();
 
                     b.HasOne("Manga4ka.Data.Entities.Manga", "Manga")
-                        .WithMany("MangaGenres")
+                        .WithMany()
                         .HasForeignKey("MangaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -318,11 +324,6 @@ namespace Manga4ka.Migrations
                 });
 
             modelBuilder.Entity("Manga4ka.Data.Entities.Genre", b =>
-                {
-                    b.Navigation("MangaGenres");
-                });
-
-            modelBuilder.Entity("Manga4ka.Data.Entities.Manga", b =>
                 {
                     b.Navigation("MangaGenres");
                 });

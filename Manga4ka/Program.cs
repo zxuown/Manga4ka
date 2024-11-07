@@ -12,30 +12,39 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Manga4ka.Business.Validation;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+var allowedOrigins = builder.Configuration.GetValue<string>("Cors:AllowedOrigins");
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyOrigin",
-        builder => builder.WithOrigins("http://localhost:5173")
+        builder => builder.WithOrigins(allowedOrigins)
     .AllowAnyHeader()
     .AllowAnyMethod());
 });
+
+var connectionString = builder.Configuration.GetConnectionString("SQLiteConnection");
 builder.Services.AddDbContext<Manga4kaContext>(options =>
 {
-    options.UseSqlite("Data Source=manga4ka.db");
+    options.UseSqlite(connectionString);
     SQLitePCL.Batteries.Init();
 });
+
+var maxRequestBodySize = builder.Configuration.GetValue<long>("ServerOptions:MaxRequestBodySize");
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
-    options.Limits.MaxRequestBodySize = 209715200;
+    options.Limits.MaxRequestBodySize = maxRequestBodySize;
 });
 
 builder.Services.Configure<IISServerOptions>(options =>
 {
-    options.MaxRequestBodySize = 209715200;
+    options.MaxRequestBodySize = maxRequestBodySize;
 });
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Manga4ka API", Version = "v1" });
@@ -44,8 +53,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IMangaRepository, MangaRepository>();
-builder.Services.AddScoped<IUserRepository,  UserRepository>();
-builder.Services.AddScoped<ICommentRepository, CommentRepository>(); 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -78,6 +87,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddAuthorization();
+
+builder.Services.AddValidatorsFromAssemblyContaining<AuthorValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<GenreValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<MangaValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<MangaGenreValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CommentValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RatingValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<FavoriteMangaValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

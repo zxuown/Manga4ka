@@ -13,19 +13,19 @@ public class GenreController(IGenreService genreService) : ControllerBase
     private readonly IGenreService _service = genreService;
 
     [HttpGet("search")]
-    public async Task<ActionResult<IEnumerable<GenreDto>>> SearchGenre([FromQuery]string query)
+    public async Task<ActionResult> SearchGenre([FromQuery]string query)
     {
         return Ok(await _service.SearchGenreAsync(query));
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<GenreDto>>> GetGenre()
+    public async Task<ActionResult> GetGenre()
     {
         return Ok(await _service.GetAllGenresAsync());
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<GenreDto>> GetGenreById(int id)
+    public async Task<ActionResult> GetGenreById(int id)
     {
         return Ok(await _service.GetGenreByIdAsync(id));
     }

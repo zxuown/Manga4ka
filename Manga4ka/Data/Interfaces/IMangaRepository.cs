@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore;
 public interface IMangaRepository : IRepository<Manga>
 {
     Task<IEnumerable<Manga>> SearchAsync(string query);
+    Task<IEnumerable<MangaGenre>> GetAllMangaGenresAsync();
+    Task<IEnumerable<MangaGenre>> GetAllMangaGenresByMangaIdAsync(int mangaId);
+    Task AddMangaGenreAsync(MangaGenre entity);
+    Task DeleteMangaGenreAsync(int id);
     Task AddFavoriteMangaAsync(FavoriteManga favoriteManga);
     Task DeleteFavoriteMangaAsync(int mangaId, int userId);
     Task<IEnumerable<Manga>> SortByPublishedAscAsync();

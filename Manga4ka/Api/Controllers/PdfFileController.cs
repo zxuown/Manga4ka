@@ -1,6 +1,5 @@
 ﻿using Manga4ka.Business.Interfaces;
 using Manga4ka.Business.Models;
-using Manga4ka.Business.Services;
 using Manga4ka.Data.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,15 +8,13 @@ namespace Manga4ka.Api.Controllers;
 
 [ApiController]
 [Route("/pdffile")]
-public class PdfFileController(IPdfFileService pdfFileService, IUnitOfWork unitOfWork) : ControllerBase
+public class PdfFileController(IPdfFileService pdfFileService) : ControllerBase
 {
     private readonly IPdfFileService _pdfFileService = pdfFileService;
 
-    private readonly IUnitOfWork _unitOfWork = unitOfWork;
-
     [Authorize(Roles = "Admin")]
     [HttpPost("upload")]
-    public async Task<ActionResult> UploadFile([FromForm] FileWrapperDto file)
+    public async Task<IActionResult> UploadFile([FromForm] FileWrapperDto file)
     {
         var url = await _pdfFileService.UploadAsync(file.file);
 
@@ -28,12 +25,11 @@ public class PdfFileController(IPdfFileService pdfFileService, IUnitOfWork unitO
     }
 
     [HttpGet("file")]
-    public async Task<ActionResult> GetPdfFile([FromQuery] int id)
+    public async Task<IActionResult> GetPdfFile([FromQuery] int id)
     {
         try
         {
-            var manga = await _unitOfWork.Manga.GetByIdAsync(id);
-            var pdfFile = await _pdfFileService.GetPdfFileAsync(manga.Pdfile);
+            var pdfFile = await _pdfFileService.GetPdfFileAsync(id);
             return pdfFile;
         }
         catch (FileNotFoundException ex)
@@ -44,9 +40,9 @@ public class PdfFileController(IPdfFileService pdfFileService, IUnitOfWork unitO
 
     [Authorize(Roles = "Admin")]
     [HttpDelete("delete/{mangaId}")]
-    public async Task DeleteFile(int mangaId)
+    public async Task<IActionResult> DeleteFile(int mangaId)
     {
-        var manga = await _unitOfWork.Manga.GetByIdAsync(mangaId);
-        _pdfFileService.Remove(manga.Pdfile);
+        await _pdfFileService.Remove(mangaId);
+        return Ok();
     }
 }

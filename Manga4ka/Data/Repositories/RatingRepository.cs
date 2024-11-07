@@ -6,7 +6,7 @@ namespace Manga4ka.Data.Repositories;
 
 public class RatingRepository(Manga4kaContext context) : BaseRepository<Rating>(context), IRatingRepository
 {
-    public  async Task<double> GetAverageRatingAsync(int mangaId)
+    public async Task<double> GetAverageRatingAsync(int mangaId)
     {
         return await _entities
                     .Where(x => x.MangaId == mangaId)
@@ -15,8 +15,8 @@ public class RatingRepository(Manga4kaContext context) : BaseRepository<Rating>(
     }
 
 
-    public  Task<bool> IsUserRated(int mangaId, int userId)
+    public Task<bool> IsUserRated(int mangaId, int userId)
     {
-        return  _entities.AnyAsync(x => x.MangaId == mangaId && x.UserId == userId);
+        return _entities.AnyAsync(x => x.MangaId == mangaId && x.UserId == userId);
     }
 }
